@@ -46,3 +46,51 @@
 .Rating {
   font-size: 2rem;
 }
+
+.DriverCard {
+  background-color: #425cbb;
+  border-radius: 10px;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.DriverCard img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 100px;
+}
+
+.DriverCard>* {
+  margin: 5px;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.DriverCard h2, p{
+  margin: 0;
+}
+
+.LikeButton{
+  font-size: 1.5rem;
+  height: 50px;
+}
+
+.ClickablePicture, .Dice {
+  cursor: pointer;
+}
+
+.Dice {
+  height: 100px;
+  width: 100px;
+}

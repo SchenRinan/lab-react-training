@@ -3,7 +3,7 @@ const Greetings = (props) => {
         if(item === 'de'){
             return 'Hallo ';
         }
-        if(item === 'de'){
+        if(item === 'fr'){
             return 'Bonjour ';
         }
         if(item === 'en'){
@@ -15,8 +15,7 @@ const Greetings = (props) => {
     }
     return ( 
         <div className="box">
-            { findLanguage(props.lang) }
-            {props.children}
+            { findLanguage(props.lang) }{props.children}
         </div>
     );
 }
