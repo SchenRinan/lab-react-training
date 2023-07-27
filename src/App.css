@@ -12,8 +12,10 @@
   display: flex;
 }
 
+
 .IdCard img{
   padding-right: 5px;
+  max-width: 100px;
 }
 
 .box-color{
@@ -114,4 +116,8 @@ p {
   justify-content: center;
   -webkit-align-items: center;
   align-items: center;
+}
+
+.FaceBook :hover{
+  background-color: pink;
 }
