@@ -4,26 +4,8 @@ import { useState } from 'react';
 const FaceBook = () => {
     const [filter, setFilter] = useState('');
 
-    const extractDb = item =>{
-        let result = [];
-        for(let i=0; i<item.length; i++){
-            result.push(
-                <div className='box IdCard' key = { item[i].img }>
-                    <img src={ item[i].img } alt="" />
-                    <div>
-                        <strong>First Name</strong>: { item[i].firstName } <br />
-                        <strong>Last Name</strong>: { item[i].lastName } <br />
-                        <strong>Country</strong>: { item[i].country } <br />
-                        <strong>Type</strong>: { item[i].isStudent ? 'Student' : 'Teacher' } <br />
-                    </div>
-                </div>
-            )
-        }
-        return result;
-    }
-
     const filterDb = item =>{
-        const filterArray = profiles.filter(filtrate => filtrate.country === item)
+        const filterArray = profiles.filter(filtrate => filtrate.country === item || item === '')
         let result = [];
         for(let i=0; i<filterArray.length; i++){
             result.push(
@@ -40,27 +22,27 @@ const FaceBook = () => {
         }
         return result;
     }
+    const buttons = item =>{
+        let result = [];
+        const countries = item.map(mapate => mapate.country)
+        let unique = [];
+        countries.forEach(element => {
+            if (!unique.includes(element)) {
+                unique.push(element);
+            }
+        });
+        
+        for(let i=0; i<unique.length; i++){
+            result.push(<button onClick={()=>setFilter(unique[i])}>{unique[i]}</button>)
+        }
+        return result;
+    }
 
     return ( 
         <div className="FaceBook">
             <button onClick={()=>setFilter('')}>All</button>
-            <button onClick={()=>setFilter('Germany')}>Germany</button>
-            <button onClick={()=>setFilter('Malaysia')}>Malaysia</button>
-            <button onClick={()=>setFilter('England')}>England</button>
-            <button onClick={()=>setFilter('USA')}>USA</button>
-            <button onClick={()=>setFilter('Sweden')}>Sweden</button>
-            <button onClick={()=>setFilter('Nigeria')}>Nigeria</button>
-            <button onClick={()=>setFilter('Italy')}>Italy</button>
-            <button onClick={()=>setFilter('Scotland')}>Scotland</button>
-            <button onClick={()=>setFilter('Kazakhstan')}>Kazakhstan</button>
-            <button onClick={()=>setFilter('Russia')}>Russia</button>
-            <button onClick={()=>setFilter('Catalonia')}>Catalonia</button>
-            <button onClick={()=>setFilter('Israel')}>Israel</button>
-            <button onClick={()=>setFilter('Brazil')}>Brazil</button>
-            <button onClick={()=>setFilter('Taiwan')}>Taiwan</button>
-            <button onClick={()=>setFilter('Turkey')}>Turkey</button>
-            <button onClick={()=>setFilter('Norway')}>Norway</button>
-            { filter ? filterDb(filter) : extractDb(profiles) }        
+            {buttons(profiles)}
+            {filterDb(filter)}
         </div>
     );
 }
