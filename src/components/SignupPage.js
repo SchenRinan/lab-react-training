@@ -12,7 +12,7 @@ const SignupPage = () => {
     const emailValidity = item =>{
         let re = /^[ ]*([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})[ ]*$/i;
         
-        setEvalue(item.target.value)
+        setEvalue(item.target.value);
         if ( re.test(emailValue) ) {
             setEmail(true);
         }
@@ -26,7 +26,7 @@ const SignupPage = () => {
             setPassword(true);
         }
         else {
-            setEmail(false);
+            setPassword(false);
         }
     }
     const onSignup = e =>{
@@ -44,8 +44,8 @@ const SignupPage = () => {
                     <Input
                         type="email"
                         onChange={e=>emailValidity(e)}
-                        valid={validEmail ? 'true':''}
-                        invalid={validEmail ? '':'true'}
+                        valid={validEmail}
+                        invalid={validEmail ? false:true}
                     />
                     <FormFeedback valid>
                     You typed a valid email
@@ -61,8 +61,8 @@ const SignupPage = () => {
                     <Input
                         type="password"
                         onChange={e=>passwordStrenght(e)}
-                        valid={strongPassword ? 'true':''}
-                        invalid={strongPassword ? '':'true'}
+                        valid={strongPassword}
+                        invalid={strongPassword ? false:true}
                     />
                     <FormFeedback valid>
                     Password is Good
@@ -92,7 +92,7 @@ const SignupPage = () => {
                 </FormGroup>
                 <Button onClick={e=>onSignup(e)}>Sign Up</Button>
             </Form>
-            {buttonRes ? 
+            {buttonRes &&
             <Card>
                 <ListGroupItem>
                 {natValue === 'en' && 'Hello'}
@@ -106,7 +106,7 @@ const SignupPage = () => {
                 Your Password is {strongPassword ? 'Strong': 'Weak'}
                 </ListGroupItem>
             </Card>
-            :''}
+            }
         </div>
     );
 }

@@ -13,6 +13,7 @@ import Carousel from './components/Carousel';
 import NumbersTable from './components/NumbersTable';
 import FaceBook from './components/FaceBook';
 import SignupPage from './components/SignupPage';
+import RGBColorPicker from './components/RGBColorPicker';
 
 import { useState } from 'react';
 
@@ -31,6 +32,7 @@ function App() {
   const [showNumbersTable, setNumbersTable] = useState(false);
   const [showFaceBook, setFaceBook] = useState(false);
   const [showSignupPage, setSignupPage] = useState(false);
+  const [showRGBColorPicker, setRGBColorPicker] = useState(false);
 
   return (
     <div className="App">
@@ -189,6 +191,10 @@ function App() {
       <h1>SignupPage</h1>
       <button onClick={()=>setSignupPage(!showSignupPage)}>{showSignupPage ? 'Hide':'Show'}</button><br/>
       {showSignupPage && <SignupPage />}
+
+      <h1>RGBColorPicker</h1>
+      <button onClick={()=>setRGBColorPicker(!showRGBColorPicker)}>{showRGBColorPicker ? 'Hide':'Show'}</button><br/>
+      {showRGBColorPicker && <RGBColorPicker />}
     </div>
   );
 }
