@@ -31,7 +31,7 @@ const FaceBook = () => {
                 unique.push(element);
             }
         });
-        
+        result.push(<button onClick={()=>setFilter('')}>All</button>);
         for(let i=0; i<unique.length; i++){
             result.push(<button onClick={()=>setFilter(unique[i])}>{unique[i]}</button>)
         }
@@ -40,7 +40,7 @@ const FaceBook = () => {
 
     return ( 
         <div className="FaceBook">
-            <button onClick={()=>setFilter('')}>All</button>
+            
             {buttons(profiles)}
             {filterDb(filter)}
         </div>
