@@ -3,7 +3,7 @@ import { Form, FormGroup, Label, Input, FormFeedback, Button, Card, ListGroupIte
 
 const SignupPage = () => {
     const [emailValue, setEvalue] = useState('');
-    const [passwordValue, setPvalue] = useState('');
+    // const [passwordValue, setPvalue] = useState('');
     const [natValue, setNvalue] = useState('en');
     const [validEmail, setEmail] = useState(false);
     const [strongPassword, setPassword] = useState(false);
@@ -11,9 +11,8 @@ const SignupPage = () => {
 
     const emailValidity = item =>{
         let re = /^[ ]*([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})[ ]*$/i;
-        
         setEvalue(item.target.value);
-        if ( re.test(emailValue) ) {
+        if ( re.test(item.target.value) ) {
             setEmail(true);
         }
         else {
@@ -21,8 +20,8 @@ const SignupPage = () => {
         }
     }
     const passwordStrenght = item =>{
-        setPvalue(item.target.value)
-        if ( passwordValue.length >= 5 ) {
+        // setPvalue(item.target.value)
+        if ( item.target.value.length >= 5 ) {
             setPassword(true);
         }
         else {

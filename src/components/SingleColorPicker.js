@@ -14,6 +14,9 @@ const SingleColorPicker  = (props) => {
         }
         else{ return 'white' }
     }
+    // const minMax = (item) => {
+    //     props.onChange
+    // }
     return ( 
         <Form>
             <FormGroup row style={{display:'flex', alignItems: 'center'}}>
@@ -31,7 +34,11 @@ const SingleColorPicker  = (props) => {
                         type="number"
                         min='0'
                         max='255'
-                        onChange={e=>props.onChange(e.target.value)}
+                        onChange={e=>{
+                            if(e.target.value>255){e.target.value = 255}
+                            if(e.target.value<0){e.target.value = 0}
+                            props.onChange(e.target.value)
+                        }}
                     />
                 </Col>
             </FormGroup>
